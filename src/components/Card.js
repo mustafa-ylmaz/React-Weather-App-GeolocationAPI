@@ -2,8 +2,19 @@ import React, { useEffect } from 'react'
 
 
 function Card(props) {
-  
-  const {data,city,lat,long} = props; 
+  const {data,city,lat} = props;
+
+
+  function getDayName(dateStr, locale)
+{
+    var date = new Date(dateStr);
+    return date.toLocaleDateString(locale, { weekday: 'long' });        
+}
+
+/*       <p>Hava durumu: {data&&data.weather?.[0].description}</p>
+*/ 
+const datestr = data&&data.list?.[0].dt_txt
+var day = getDayName(datestr, 'tr-TR')
 
 
   useEffect(() => {
@@ -11,8 +22,7 @@ function Card(props) {
   }, [data,city,lat])
   return (
     <>
-      <p>Hava durumu: {data&&data.weather?.[0].description}</p>
-
+    {day}
     
     </>
   )

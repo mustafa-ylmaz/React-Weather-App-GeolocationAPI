@@ -56,8 +56,10 @@ function App() {
   
   const fetchdata = async() => { 
     if(lat) { 
-       await axios(`https://api.openweathermap.org/data/2.5/weather?${'lat='+lat+'&lon='+long}&appid=${APIKEY}&lang=tr&units=metric`)
+       await axios(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${APIKEY}`)
       .then((res) => setData(res.data));
+      console.log(data);
+
       
     }
     else {
